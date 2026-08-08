@@ -1,0 +1,53 @@
+/* ============================================================
+   BON UI — Typography utilities
+   Composite text-style classes built on the Figma type ramp.
+   Family = Pretendard. Default tracking is -0.3px (Korean-tuned).
+   Scale: display / heading / label / paragraph / detail
+   ============================================================ */
+
+:root {
+  --bon-tracking: -0.3px;
+}
+
+.bon-type {
+  font-family: var(--font-sans);
+  letter-spacing: var(--bon-tracking);
+  margin: 0;
+}
+
+/* ---- Display (marketing / hero) ---- */
+.bon-display-large  { font: 800 calc(var(--fontsize-display-large)  * 1px)/calc(var(--lineheight-display-large)  * 1px) var(--font-sans); letter-spacing: var(--bon-tracking); }
+.bon-display-medium { font: 800 calc(var(--fontsize-display-medium) * 1px)/calc(var(--lineheight-display-medium) * 1px) var(--font-sans); letter-spacing: var(--bon-tracking); }
+.bon-display-small  { font: 700 calc(var(--fontsize-display-small)  * 1px)/calc(var(--lineheight-display-small)  * 1px) var(--font-sans); letter-spacing: var(--bon-tracking); }
+.bon-display-xsmall { font: 700 calc(var(--fontsize-display-xsmall) * 1px)/calc(var(--lineheight-display-xsmall) * 1px) var(--font-sans); letter-spacing: var(--bon-tracking); }
+
+/* ---- Heading (section / card titles) ---- */
+.bon-heading-large  { font: 700 calc(var(--fontsize-heading-large)  * 1px)/calc(var(--lineheight-heading-large)  * 1px) var(--font-sans); letter-spacing: var(--bon-tracking); }
+.bon-heading-medium { font: 700 calc(var(--fontsize-heading-medium) * 1px)/calc(var(--lineheight-heading-medium) * 1px) var(--font-sans); letter-spacing: var(--bon-tracking); }
+.bon-heading-small  { font: 700 calc(var(--fontsize-heading-small)  * 1px)/calc(var(--lineheight-heading-small)  * 1px) var(--font-sans); letter-spacing: var(--bon-tracking); }
+.bon-heading-xsmall { font: 700 calc(var(--fontsize-heading-xsmall) * 1px)/calc(var(--lineheight-heading-xsmall) * 1px) var(--font-sans); letter-spacing: var(--bon-tracking); }
+
+/* ---- Label (controls / buttons / inline UI) ---- */
+.bon-label-large  { font: 600 calc(var(--fontsize-label-large)  * 1px)/calc(var(--lineheight-label-large)  * 1px) var(--font-sans); letter-spacing: var(--bon-tracking); }
+.bon-label-medium { font: 600 calc(var(--fontsize-label-medium) * 1px)/calc(var(--lineheight-label-medium) * 1px) var(--font-sans); letter-spacing: var(--bon-tracking); }
+.bon-label-small  { font: 600 calc(var(--fontsize-label-small)  * 1px)/calc(var(--lineheight-label-small)  * 1px) var(--font-sans); letter-spacing: var(--bon-tracking); }
+.bon-label-xsmall { font: 600 calc(var(--fontsize-label-xsmall) * 1px)/calc(var(--lineheight-label-xsmall) * 1px) var(--font-sans); letter-spacing: var(--bon-tracking); }
+
+/* ---- Paragraph (body copy) ---- */
+.bon-paragraph-large  { font: 400 calc(var(--fontsize-paragraph-large)  * 1px)/calc(var(--lineheight-paragraph-large)  * 1px) var(--font-sans); letter-spacing: var(--bon-tracking); }
+.bon-paragraph-medium { font: 400 calc(var(--fontsize-paragraph-medium) * 1px)/calc(var(--lineheight-paragraph-medium) * 1px) var(--font-sans); letter-spacing: var(--bon-tracking); }
+.bon-paragraph-small  { font: 400 calc(var(--fontsize-paragraph-small)  * 1px)/calc(var(--lineheight-paragraph-small)  * 1px) var(--font-sans); letter-spacing: var(--bon-tracking); }
+.bon-paragraph-xsmall { font: 400 calc(var(--fontsize-paragraph-xsmall) * 1px)/calc(var(--lineheight-paragraph-xsmall) * 1px) var(--font-sans); letter-spacing: var(--bon-tracking); }
+
+/* ---- Detail (captions / metadata) ---- */
+.bon-detail-large  { font: 400 calc(var(--fontsize-detail-large)  * 1px)/calc(var(--lineheight-detail-large)  * 1px) var(--font-sans); letter-spacing: var(--bon-tracking); }
+.bon-detail-medium { font: 400 calc(var(--fontsize-detail-medium) * 1px)/calc(var(--lineheight-detail-medium) * 1px) var(--font-sans); letter-spacing: var(--bon-tracking); }
+.bon-detail-small  { font: 400 calc(var(--fontsize-detail-small)  * 1px)/calc(var(--lineheight-detail-small)  * 1px) var(--font-sans); letter-spacing: var(--bon-tracking); }
+.bon-detail-xsmall { font: 700 calc(var(--fontsize-detail-xsmall) * 1px)/calc(var(--lineheight-detail-xsmall) * 1px) var(--font-sans); letter-spacing: var(--bon-tracking); }
+
+/* ---- Weight helpers ---- */
+.bon-w-regular  { font-weight: 400; }
+.bon-w-medium   { font-weight: 500; }
+.bon-w-semibold { font-weight: 600; }
+.bon-w-bold     { font-weight: 700; }
+.bon-w-black    { font-weight: 800; }

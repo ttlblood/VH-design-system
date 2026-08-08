@@ -1,0 +1,17 @@
+/* ============================================================
+   BON UI Foundation Library — global stylesheet entry point.
+   Consumers link THIS one file. It is an @import manifest only:
+   all real declarations live in the imported token + base layers.
+
+   Order matters: raw Figma variables first (they define the
+   primitives every later layer references), then fonts, base
+   reset, and typography utilities.
+   ============================================================ */
+
+@import "./tokens/fig-tokens.css";        /* 3619 Figma Variables — light(:root) + dark + platform modes */
+@import "./tokens/fig-typography.css";     /* generated text/effect styles */
+@import "./tokens/fonts.css";              /* @font-face + family aliases */
+@import "./tokens/base.css";               /* reset + document defaults */
+@import "./tokens/typography.css";         /* composite text-style classes */
+@import "./components/bon-components.css";    /* core component styles */
+@import "./components/bon-components-2.css";  /* form / feedback / navigation styles */

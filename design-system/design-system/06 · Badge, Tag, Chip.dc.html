@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="tokens.css">
+</helmet>
+<div style="min-height:100%;background:var(--gray-50);font-family:var(--font-sans);letter-spacing:var(--tracking-tight);color:var(--gray-900);padding:48px 56px;box-sizing:border-box;">
+  <div style="max-width:1180px;margin:0 auto;">
+
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:40px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="width:22px;height:22px;border-radius:6px;background:var(--primary);display:inline-block;"></span>
+        <span style="font-size:var(--text-sm);font-weight:var(--font-weight-bold);color:var(--primary);letter-spacing:0.04em;text-transform:uppercase;">Component · 06</span>
+      </div>
+      <h1 style="margin:0;font-size:var(--text-4xl);line-height:var(--leading-4xl);font-weight:var(--font-weight-extrabold);">배지 · 태그 · 칩</h1>
+      <p style="margin:0;max-width:640px;font-size:var(--text-base);line-height:var(--leading-base);color:var(--gray-500);text-wrap:pretty;">배지는 상태·수치 라벨(작고 굵음, 12px/500). 칩은 클릭 가능한 필터·키워드로 알약 형태. 상태색은 은은한 배경 + 진한 글씨(subtle) 조합을 씁니다.</p>
+    </div>
+
+    <!-- Badge variants -->
+    <section style="margin-bottom:40px;">
+      <h2 style="margin:0 0 16px;font-size:var(--text-xl);font-weight:var(--font-weight-bold);">배지 Badge</h2>
+      <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-xl);padding:28px;display:flex;flex-direction:column;gap:22px;">
+        <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+          <span style="display:inline-flex;align-items:center;padding:2px 8px;border-radius:var(--radius-md);background:var(--primary);color:#fff;font-size:var(--text-xs);font-weight:500;">Default</span>
+          <span style="display:inline-flex;align-items:center;padding:2px 8px;border-radius:var(--radius-md);background:var(--secondary);color:var(--secondary-foreground);font-size:var(--text-xs);font-weight:500;">Secondary</span>
+          <span style="display:inline-flex;align-items:center;padding:2px 8px;border-radius:var(--radius-md);background:var(--danger);color:#fff;font-size:var(--text-xs);font-weight:500;">Destructive</span>
+          <span style="display:inline-flex;align-items:center;padding:2px 8px;border-radius:var(--radius-md);border:1px solid var(--border);color:var(--foreground);font-size:var(--text-xs);font-weight:500;">Outline</span>
+        </div>
+        <div style="height:1px;background:var(--gray-100);"></div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <span style="font-size:var(--text-sm);font-weight:600;color:var(--gray-500);">상태 · Subtle (은은한 배경)</span>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+            <span style="display:inline-flex;align-items:center;padding:2px 10px;border-radius:var(--radius-full);background:var(--primary-subtle);color:var(--primary-subtle-foreground);font-size:var(--text-xs);font-weight:600;">Day 7</span>
+            <span style="display:inline-flex;align-items:center;padding:2px 10px;border-radius:var(--radius-full);background:var(--success-subtle);color:var(--success-foreground);font-size:var(--text-xs);font-weight:600;">완료</span>
+            <span style="display:inline-flex;align-items:center;padding:2px 10px;border-radius:var(--radius-full);background:var(--info-subtle);color:var(--info-foreground);font-size:var(--text-xs);font-weight:600;">복습중</span>
+            <span style="display:inline-flex;align-items:center;padding:2px 10px;border-radius:var(--radius-full);background:var(--danger-subtle);color:var(--danger);font-size:var(--text-xs);font-weight:600;">미완료</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <span style="font-size:var(--text-sm);font-weight:600;color:var(--gray-500);">태그 · 대문자 라벨</span>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+            <span style="display:inline-flex;align-items:center;padding:2px 8px;border-radius:var(--radius-sm);background:var(--danger);color:#fff;font-size:10px;font-weight:800;letter-spacing:0.04em;">LIVE</span>
+            <span style="display:inline-flex;align-items:center;padding:2px 8px;border-radius:var(--radius-sm);background:var(--primary);color:#fff;font-size:10px;font-weight:800;letter-spacing:0.04em;">NEW</span>
+            <span style="display:inline-flex;align-items:center;padding:2px 8px;border-radius:var(--radius-sm);background:var(--gray-900);color:#fff;font-size:10px;font-weight:800;letter-spacing:0.04em;">MY</span>
+            <span style="display:inline-flex;align-items:center;padding:2px 8px;border-radius:var(--radius-sm);background:var(--red-500);color:#fff;font-size:10px;font-weight:800;">42%</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chips -->
+    <section style="margin-bottom:40px;">
+      <h2 style="margin:0 0 16px;font-size:var(--text-xl);font-weight:var(--font-weight-bold);">칩 Chip <span style="font-size:var(--text-sm);font-weight:400;color:var(--gray-400);">· 클릭 가능한 필터·키워드</span></h2>
+      <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-xl);padding:28px;display:flex;flex-direction:column;gap:20px;">
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-size:var(--text-sm);font-weight:600;color:var(--gray-500);">필터 칩 (선택 상태)</span>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <button style="padding:6px 14px;border:none;border-radius:var(--radius-full);background:var(--primary);color:#fff;font-family:inherit;font-size:var(--text-sm);font-weight:500;cursor:pointer;box-shadow:var(--shadow-md);">전체</button>
+            <button style="padding:6px 14px;border:1px solid var(--gray-200);border-radius:var(--radius-full);background:#fff;color:var(--gray-600);font-family:inherit;font-size:var(--text-sm);font-weight:500;cursor:pointer;" style-hover="background:var(--gray-50);">Day 1</button>
+            <button style="padding:6px 14px;border:1px solid var(--gray-200);border-radius:var(--radius-full);background:#fff;color:var(--gray-600);font-family:inherit;font-size:var(--text-sm);font-weight:500;cursor:pointer;" style-hover="background:var(--gray-50);">Day 3</button>
+            <button style="padding:6px 14px;border:1px solid var(--gray-200);border-radius:var(--radius-full);background:#fff;color:var(--gray-600);font-family:inherit;font-size:var(--text-sm);font-weight:500;cursor:pointer;" style-hover="background:var(--gray-50);">Day 7</button>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-size:var(--text-sm);font-weight:600;color:var(--gray-500);">키워드 칩 (검색 · hover 시 보라)</span>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <button style="padding:6px 14px;border:1px solid var(--gray-100);border-radius:var(--radius-full);background:#fff;color:var(--gray-600);font-family:inherit;font-size:var(--text-sm);font-weight:500;cursor:pointer;box-shadow:var(--shadow-sm);transition:all var(--duration-base);" style-hover="background:var(--primary-subtle);color:var(--primary-subtle-foreground);box-shadow:var(--shadow-md);">#토익</button>
+            <button style="padding:6px 14px;border:1px solid var(--gray-100);border-radius:var(--radius-full);background:#fff;color:var(--gray-600);font-family:inherit;font-size:var(--text-sm);font-weight:500;cursor:pointer;box-shadow:var(--shadow-sm);transition:all var(--duration-base);" style-hover="background:var(--primary-subtle);color:var(--primary-subtle-foreground);box-shadow:var(--shadow-md);">#수능</button>
+            <button style="padding:6px 14px;border:1px solid var(--gray-100);border-radius:var(--radius-full);background:#fff;color:var(--gray-600);font-family:inherit;font-size:var(--text-sm);font-weight:500;cursor:pointer;box-shadow:var(--shadow-sm);transition:all var(--duration-base);" style-hover="background:var(--primary-subtle);color:var(--primary-subtle-foreground);box-shadow:var(--shadow-md);">#비즈니스</button>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-size:var(--text-sm);font-weight:600;color:var(--gray-500);">삭제 가능 칩 (× 포함)</span>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span style="display:inline-flex;align-items:center;gap:6px;padding:5px 6px 5px 12px;border-radius:var(--radius-full);background:var(--primary-subtle);color:var(--primary-subtle-foreground);font-size:var(--text-sm);font-weight:500;">최근 검색어<span style="width:16px;height:16px;border-radius:50%;background:var(--purple-200);color:var(--purple-700);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;cursor:pointer;">×</span></span>
+            <span style="display:inline-flex;align-items:center;gap:6px;padding:5px 6px 5px 12px;border-radius:var(--radius-full);background:var(--gray-100);color:var(--gray-600);font-size:var(--text-sm);font-weight:500;">apple<span style="width:16px;height:16px;border-radius:50%;background:var(--gray-200);color:var(--gray-500);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;cursor:pointer;">×</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Avatar & Dot -->
+    <section>
+      <h2 style="margin:0 0 16px;font-size:var(--text-xl);font-weight:var(--font-weight-bold);">아바타 · 도트 Avatar &amp; Dot</h2>
+      <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-xl);padding:28px;display:flex;gap:32px;align-items:center;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span style="width:40px;height:40px;border-radius:50%;background:var(--primary-subtle);color:var(--primary-subtle-foreground);display:flex;align-items:center;justify-content:center;font-weight:700;">보</span>
+          <span style="width:40px;height:40px;border-radius:50%;background:var(--purple-600);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;">V</span>
+          <span style="width:48px;height:48px;border-radius:50%;background:var(--gray-200);color:var(--gray-500);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;">?</span>
+        </div>
+        <div style="width:1px;height:40px;background:var(--gray-200);"></div>
+        <div style="display:flex;align-items:center;gap:20px;">
+          <span style="display:inline-flex;align-items:center;gap:6px;font-size:var(--text-sm);color:var(--gray-600);"><span style="width:8px;height:8px;border-radius:50%;background:var(--success);"></span>온라인</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;font-size:var(--text-sm);color:var(--gray-600);"><span style="width:8px;height:8px;border-radius:50%;background:var(--danger);"></span>미완료</span>
+          <span style="position:relative;display:inline-flex;align-items:center;font-size:var(--text-sm);color:var(--gray-600);">알림<span style="position:absolute;top:-4px;right:-8px;width:8px;height:8px;border-radius:50%;background:var(--danger);border:1.5px solid #fff;"></span></span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1300,&quot;height&quot;:1150}}"></script>
+</body>
+</html>

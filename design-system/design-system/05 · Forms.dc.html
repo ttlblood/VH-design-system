@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="tokens.css">
+</helmet>
+<div style="min-height:100%;background:var(--gray-50);font-family:var(--font-sans);letter-spacing:var(--tracking-tight);color:var(--gray-900);padding:48px 56px;box-sizing:border-box;">
+  <div style="max-width:1180px;margin:0 auto;">
+
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:40px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="width:22px;height:22px;border-radius:6px;background:var(--primary);display:inline-block;"></span>
+        <span style="font-size:var(--text-sm);font-weight:var(--font-weight-bold);color:var(--primary);letter-spacing:0.04em;text-transform:uppercase;">Component · 05</span>
+      </div>
+      <h1 style="margin:0;font-size:var(--text-4xl);line-height:var(--leading-4xl);font-weight:var(--font-weight-extrabold);">입력 · 폼 Forms</h1>
+      <p style="margin:0;max-width:640px;font-size:var(--text-base);line-height:var(--leading-base);color:var(--gray-500);text-wrap:pretty;">입력 높이 36px, 라운드 8px, 배경 <code style="font-family:var(--font-mono);background:var(--gray-100);padding:1px 6px;border-radius:4px;">#F3F3F5</code>. 폰트는 iOS 줌 방지를 위해 16px 고정. 포커스 시 보라 링(3px). 선택 컨트롤은 켜짐 상태에서 보라로 채웁니다.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+
+      <!-- Text fields -->
+      <section style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-xl);padding:28px;">
+        <h2 style="margin:0 0 18px;font-size:var(--text-lg);font-weight:var(--font-weight-bold);">텍스트 필드 TextField</h2>
+        <div style="display:flex;flex-direction:column;gap:18px;">
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <label style="font-size:var(--text-sm);font-weight:500;color:var(--gray-700);">이메일</label>
+            <input placeholder="you@example.com" style="height:36px;padding:0 12px;border:1px solid var(--input-border);border-radius:var(--radius-md);background:var(--input-background);font-family:inherit;font-size:16px;letter-spacing:var(--tracking-tight);outline:none;" />
+            <span style="font-size:var(--text-xs);color:var(--gray-400);">Default · input-background</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <label style="font-size:var(--text-sm);font-weight:500;color:var(--gray-700);">비밀번호</label>
+            <input value="focused" style="height:36px;padding:0 12px;border:1px solid var(--primary);border-radius:var(--radius-md);background:#fff;font-family:inherit;font-size:16px;outline:none;box-shadow:0 0 0 3px var(--ring);" />
+            <span style="font-size:var(--text-xs);color:var(--primary);">Focus · 보라 링 3px</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <label style="font-size:var(--text-sm);font-weight:500;color:var(--gray-700);">단어장 이름</label>
+            <input value="중복된 이름" style="height:36px;padding:0 12px;border:1px solid var(--danger);border-radius:var(--radius-md);background:#fff;font-family:inherit;font-size:16px;outline:none;box-shadow:0 0 0 3px rgba(212,24,61,.2);" />
+            <span style="font-size:var(--text-xs);color:var(--danger);">Error · 이미 존재하는 이름입니다</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <label style="font-size:var(--text-sm);font-weight:500;color:var(--gray-400);">비활성</label>
+            <input value="수정 불가" disabled style="height:36px;padding:0 12px;border:1px solid var(--input-border);border-radius:var(--radius-md);background:var(--gray-100);color:var(--gray-400);font-family:inherit;font-size:16px;outline:none;opacity:0.6;" />
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <label style="font-size:var(--text-sm);font-weight:500;color:var(--gray-700);">메모 Textarea</label>
+            <textarea style="min-height:72px;padding:10px 12px;border:1px solid var(--input-border);border-radius:var(--radius-md);background:var(--input-background);font-family:inherit;font-size:16px;line-height:1.5;outline:none;resize:vertical;">예문이나 메모를 여기에 입력합니다.</textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- Selection controls -->
+      <section style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-xl);padding:28px;display:flex;flex-direction:column;gap:28px;">
+        <div>
+          <h2 style="margin:0 0 18px;font-size:var(--text-lg);font-weight:var(--font-weight-bold);">체크박스 Checkbox</h2>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <label style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+              <span style="width:20px;height:20px;border-radius:6px;background:var(--primary);display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:900;box-shadow:var(--shadow-sm);">✓</span>
+              <span style="font-size:var(--text-sm);color:var(--gray-700);">외운 단어 숨기기 <span style="color:var(--gray-400);">(선택됨)</span></span>
+            </label>
+            <label style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+              <span style="width:20px;height:20px;border-radius:6px;border:1.5px solid var(--gray-300);background:#fff;"></span>
+              <span style="font-size:var(--text-sm);color:var(--gray-700);">뜻 함께 보기 <span style="color:var(--gray-400);">(해제)</span></span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <h2 style="margin:0 0 18px;font-size:var(--text-lg);font-weight:var(--font-weight-bold);">라디오 Radio</h2>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <label style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+              <span style="width:20px;height:20px;border-radius:50%;border:1.5px solid var(--primary);display:flex;align-items:center;justify-content:center;"><span style="width:10px;height:10px;border-radius:50%;background:var(--primary);"></span></span>
+              <span style="font-size:var(--text-sm);color:var(--gray-700);">Day 7 복습</span>
+            </label>
+            <label style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+              <span style="width:20px;height:20px;border-radius:50%;border:1.5px solid var(--gray-300);"></span>
+              <span style="font-size:var(--text-sm);color:var(--gray-700);">전체 단어</span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <h2 style="margin:0 0 18px;font-size:var(--text-lg);font-weight:var(--font-weight-bold);">스위치 Switch</h2>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <label style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;">
+              <span style="font-size:var(--text-sm);color:var(--gray-700);">푸시 알림</span>
+              <span style="width:44px;height:26px;border-radius:var(--radius-full);background:var(--primary);position:relative;transition:background var(--duration-base);"><span style="position:absolute;top:3px;left:21px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:var(--shadow-sm);transition:left 180ms var(--ease-standard);"></span></span>
+            </label>
+            <label style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;">
+              <span style="font-size:var(--text-sm);color:var(--gray-700);">자동 재생</span>
+              <span style="width:44px;height:26px;border-radius:var(--radius-full);background:var(--switch-background);position:relative;transition:background var(--duration-base);"><span style="position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:var(--shadow-sm);"></span></span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <h2 style="margin:0 0 18px;font-size:var(--text-lg);font-weight:var(--font-weight-bold);">슬라이더 Slider</h2>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="flex:1;height:6px;border-radius:var(--radius-full);background:var(--gray-200);position:relative;">
+              <div style="position:absolute;left:0;top:0;height:6px;width:60%;border-radius:var(--radius-full);background:var(--primary);"></div>
+              <div style="position:absolute;left:60%;top:50%;transform:translate(-50%,-50%);width:18px;height:18px;border-radius:50%;background:#fff;border:2px solid var(--primary);box-shadow:var(--shadow-sm);"></div>
+            </div>
+            <span style="font-family:var(--font-mono);font-size:12px;color:var(--gray-500);min-width:34px;text-align:right;">60%</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1300,&quot;height&quot;:1000}}"></script>
+</body>
+</html>

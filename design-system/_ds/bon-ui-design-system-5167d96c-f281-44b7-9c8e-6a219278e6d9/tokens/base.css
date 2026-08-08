@@ -1,0 +1,47 @@
+/* ============================================================
+   BON UI — Base layer
+   Light reset + document defaults. Applies the Pretendard system
+   font and neutral surface/foreground tokens to the page.
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: calc(var(--fontsize-label-medium, 16) * 1px);
+  line-height: calc(var(--lineheight-22, 22) * 1px);
+  letter-spacing: -0.3px;
+  color: var(--neutral-foreground-default, rgb(19, 19, 19));
+  background: var(--neutral-background-default, rgb(255, 255, 255));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Korean + Latin tabular-friendly numeric default for data UI */
+:root {
+  font-feature-settings: "tnum" off;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+  letter-spacing: inherit;
+}
+
+a {
+  color: var(--color-bluelink, rgb(0, 104, 195));
+  text-decoration: none;
+}
