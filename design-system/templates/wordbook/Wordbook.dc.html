@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="단어장 목록 Wordbook" description="상단 헤더 · 필터 바 · 단어 카드 리스트 · 하단 더보기까지 묶은 단어장 화면" -->
+<helmet>
+  <script src="./ds-base.js"></script>
+  <link rel="stylesheet" href="../../tokens.css">
+</helmet>
+<div style="min-height:100%;background:var(--gray-50);font-family:var(--font-sans);letter-spacing:var(--tracking-tight);color:var(--gray-900);padding:32px 24px 48px;box-sizing:border-box;">
+  <div style="max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:16px;">
+
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;">
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <span style="font-size:var(--text-xs);font-weight:700;color:var(--primary);letter-spacing:0.06em;text-transform:uppercase;">Wordbook</span>
+        <h1 style="margin:0;font-size:var(--text-2xl);line-height:var(--leading-2xl);font-weight:var(--font-weight-extrabold);">내 단어장</h1>
+      </div>
+      <span style="font-size:var(--text-sm);color:var(--gray-500);white-space:nowrap;">전체 : 단어 23개, 의미 31개</span>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.95);border:1px solid var(--border-subtle);border-radius:var(--radius-2xl);padding:16px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div style="flex:1;min-width:0;height:40px;padding:0 12px;border:1px solid var(--gray-200);border-radius:var(--radius-md);background:#fff;display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer;transition:background var(--duration-fast);" style-hover="background:var(--gray-50);">
+          <span style="font-size:var(--text-sm);white-space:nowrap;">최근 업데이트 순</span>
+          <span style="color:var(--gray-400);font-size:11px;opacity:0.6;">⌄</span>
+        </div>
+        <div style="flex:1;min-width:0;height:40px;padding:0 12px;border:1px solid var(--gray-200);border-radius:var(--radius-md);background:#fff;display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer;transition:background var(--duration-fast);" style-hover="background:var(--gray-50);">
+          <span style="font-size:var(--text-sm);white-space:nowrap;">전체</span>
+          <span style="color:var(--gray-400);font-size:11px;opacity:0.6;">⌄</span>
+        </div>
+        <sc-if value="{{ maskOff }}" hint-placeholder-val="{{ true }}">
+          <button onClick="{{ toggleMask }}" style="flex:1;min-width:0;height:40px;padding:0 12px;border:1px solid transparent;border-radius:var(--radius-md);background:var(--primary);color:#fff;font-family:inherit;font-size:var(--text-sm);font-weight:700;cursor:pointer;box-shadow:var(--shadow-md);transition:all var(--duration-base);" style-hover="background:var(--primary-hover);">의미 가리기</button>
+        </sc-if>
+        <sc-if value="{{ maskOn }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ toggleMask }}" style="flex:1;min-width:0;height:40px;padding:0 12px;border:1px solid transparent;border-radius:var(--radius-md);background:var(--primary-active);color:#fff;font-family:inherit;font-size:var(--text-sm);font-weight:700;cursor:pointer;box-shadow:var(--shadow-md);transition:all var(--duration-base);">의미 보이기</button>
+        </sc-if>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;margin-top:8px;">
+        <sc-if value="{{ planned }}" hint-placeholder-val="{{ true }}">
+          <button onClick="{{ togglePlanned }}" style="height:24px;padding:0 10px;border:1px solid var(--gray-500);border-radius:var(--radius-md);background:var(--gray-500);color:#fff;font-family:inherit;font-size:var(--text-sm);font-weight:700;cursor:pointer;box-shadow:var(--shadow-sm);">학습 예정</button>
+        </sc-if>
+        <sc-if value="{{ plannedOff }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ togglePlanned }}" style="height:24px;padding:0 10px;border:1px solid var(--gray-200);border-radius:var(--radius-md);background:var(--gray-100);color:var(--gray-400);font-family:inherit;font-size:var(--text-sm);font-weight:700;cursor:pointer;">학습 예정</button>
+        </sc-if>
+        <sc-if value="{{ correct }}" hint-placeholder-val="{{ true }}">
+          <button onClick="{{ toggleCorrect }}" style="height:24px;padding:0 10px;border:1px solid var(--green-500);border-radius:var(--radius-md);background:var(--green-500);color:#fff;font-family:inherit;font-size:var(--text-sm);font-weight:700;cursor:pointer;box-shadow:var(--shadow-sm);">정답</button>
+        </sc-if>
+        <sc-if value="{{ correctOff }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ toggleCorrect }}" style="height:24px;padding:0 10px;border:1px solid var(--green-200);border-radius:var(--radius-md);background:var(--green-100);color:var(--gray-400);font-family:inherit;font-size:var(--text-sm);font-weight:700;cursor:pointer;">정답</button>
+        </sc-if>
+        <sc-if value="{{ wrong }}" hint-placeholder-val="{{ true }}">
+          <button onClick="{{ toggleWrong }}" style="height:24px;padding:0 10px;border:1px solid var(--red-500);border-radius:var(--radius-md);background:var(--red-500);color:#fff;font-family:inherit;font-size:var(--text-sm);font-weight:700;cursor:pointer;box-shadow:var(--shadow-sm);">오답</button>
+        </sc-if>
+        <sc-if value="{{ wrongOff }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ toggleWrong }}" style="height:24px;padding:0 10px;border:1px solid var(--red-200);border-radius:var(--radius-md);background:var(--red-100);color:var(--gray-400);font-family:inherit;font-size:var(--text-sm);font-weight:700;cursor:pointer;">오답</button>
+        </sc-if>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;margin-top:12px;border-top:1px solid var(--gray-200);padding-top:10px;">
+        <span style="font-size:var(--text-sm);font-weight:500;color:var(--gray-400);flex-shrink:0;">표시된 의미 {{ shownMeanings }}개</span>
+        <sc-if value="{{ testOn }}" hint-placeholder-val="{{ true }}">
+          <button style="height:36px;padding:0 12px;border:1px solid var(--primary-border);border-radius:var(--radius-md);background:var(--primary-subtle);color:var(--primary);font-family:inherit;font-size:var(--text-sm);font-weight:700;cursor:pointer;" style-hover="background:var(--purple-100);">표시된 단어 테스트 해보기</button>
+        </sc-if>
+        <sc-if value="{{ testOff }}" hint-placeholder-val="{{ false }}">
+          <button style="height:36px;padding:0 12px;border:1px solid var(--gray-200);border-radius:var(--radius-md);background:var(--gray-100);color:var(--gray-400);font-family:inherit;font-size:var(--text-sm);font-weight:700;cursor:not-allowed;">표시된 단어 테스트 해보기</button>
+        </sc-if>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <sc-for list="{{ cards }}" as="c" hint-placeholder-count="3">
+        <div style="background:#fff;border:1px solid var(--gray-100);border-radius:var(--radius-2xl);padding:20px 24px;transition:box-shadow var(--duration-base);" style-hover="box-shadow:var(--shadow-lg);">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+            <span style="font-size:var(--text-lg);font-weight:700;color:var(--gray-900);">{{ c.word }}</span>
+            <span style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gray-400);font-size:13px;cursor:pointer;transition:all var(--duration-fast);" style-hover="background:var(--purple-100);color:var(--primary);">◍</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:18px 28px;">
+            <sc-for list="{{ c.meanings }}" as="m" hint-placeholder-count="2">
+              <div style="display:flex;align-items:center;gap:10px;min-width:0;">
+                <div style="display:flex;flex-direction:column;gap:6px;align-items:center;flex-shrink:0;">
+                  <span style="width:8px;height:8px;border-radius:50%;background:{{ m.dots.0 }};box-shadow:var(--shadow-sm);"></span>
+                  <span style="width:8px;height:8px;border-radius:50%;background:{{ m.dots.1 }};box-shadow:var(--shadow-sm);"></span>
+                  <span style="width:8px;height:8px;border-radius:50%;background:{{ m.dots.2 }};box-shadow:var(--shadow-sm);"></span>
+                </div>
+                <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px;">
+                  <div style="display:block;">
+                    <span style="display:inline-flex;align-items:center;padding:1px 6px;margin-right:6px;border-radius:var(--radius-sm);background:var(--gray-100);color:var(--gray-500);font-size:8px;font-weight:700;">{{ m.pos }}</span>
+                    <span style="display:inline-flex;align-items:center;padding:2px 10px;margin-right:6px;border-radius:var(--radius-full);background:var(--purple-100);color:var(--purple-700);font-size:8px;font-weight:500;">{{ m.stage }}</span>
+                    <span style="font-size:var(--text-sm);font-weight:600;color:var(--gray-900);">{{ m.meaning }}</span>
+                  </div>
+                  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:10px;">
+                    <span style="font-size:var(--text-xs);color:var(--gray-500);line-height:1.5;">{{ m.ex }}</span>
+                    <span style="color:var(--gray-400);font-size:10px;flex-shrink:0;white-space:nowrap;">{{ m.ts }}</span>
+                  </div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{ hasMore }}" hint-placeholder-val="{{ true }}">
+      <button onClick="{{ loadMore }}" style="align-self:center;margin-top:8px;height:44px;padding:0 28px;border:1px solid var(--gray-200);border-radius:var(--radius-full);background:#fff;color:var(--gray-600);font-family:inherit;font-size:var(--text-sm);font-weight:700;cursor:pointer;box-shadow:var(--shadow-sm);transition:all var(--duration-base);" style-hover="background:var(--gray-50);color:var(--primary);border-color:var(--primary-border);">더보기 {{ moreCount }}</button>
+    </sc-if>
+    <sc-if value="{{ allLoaded }}" hint-placeholder-val="{{ false }}">
+      <span style="align-self:center;margin-top:8px;font-size:var(--text-xs);color:var(--gray-400);">마지막 단어입니다</span>
+    </sc-if>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:960,&quot;height&quot;:900}}">
+const D = { g: 'var(--green-500)', r: 'var(--red-500)', n: 'var(--gray-300)' };
+const ALL = [
+  { word: 'drain', meanings: [
+    { pos: '명사', stage: '7일차', meaning: '배수관, 하수구', ex: 'The sink is clogged, and the drain is blocked.', ts: '2개월 전', dots: [D.g, D.n, D.n] },
+    { pos: '명사', stage: '3일차', meaning: '점진적인 감소, 소모', ex: "The drain on the company's resources was significant.", ts: '2개월 전', dots: [D.g, D.r, D.n] },
+    { pos: '타동사', stage: '1일차', meaning: '기진맥진하게 하다', ex: 'The long journey drained him.', ts: '2개월 전', dots: [D.g, D.n, D.n] } ] },
+  { word: 'sustain', meanings: [
+    { pos: '타동사', stage: '신규', meaning: '지속하다, 유지하다', ex: 'They sustained the pace for an hour.', ts: '3일 전', dots: [D.n, D.n, D.n] },
+    { pos: '타동사', stage: '1일차', meaning: '(피해를) 입다', ex: 'He sustained minor injuries.', ts: '3일 전', dots: [D.r, D.n, D.n] } ] },
+  { word: 'concede', meanings: [
+    { pos: '타동사', stage: '3일차', meaning: '인정하다, 시인하다', ex: 'She conceded that he was right.', ts: '1주 전', dots: [D.g, D.g, D.n] },
+    { pos: '자동사', stage: '3일차', meaning: '(패배를) 인정하다', ex: 'The candidate conceded on election night.', ts: '1주 전', dots: [D.g, D.n, D.n] } ] },
+  { word: 'prudent', meanings: [
+    { pos: '형용사', stage: '7일차', meaning: '신중한, 분별 있는', ex: 'It would be prudent to wait.', ts: '2주 전', dots: [D.g, D.g, D.g] } ] },
+  { word: 'lapse', meanings: [
+    { pos: '명사', stage: '1일차', meaning: '실수, 착오', ex: 'A lapse in judgment cost them the deal.', ts: '2주 전', dots: [D.r, D.n, D.n] },
+    { pos: '자동사', stage: '신규', meaning: '(효력이) 소멸하다', ex: 'The membership lapsed last month.', ts: '2주 전', dots: [D.n, D.n, D.n] } ] } ];
+
+class Component extends DCLogic {
+  state = { count: 3, mask: false, planned: true, correct: true, wrong: true };
+  renderVals() {
+    const visible = ALL.slice(0, this.state.count);
+    const shown = visible.reduce((n, c) => n + c.meanings.length, 0);
+    const rest = ALL.length - this.state.count;
+    const testOn = shown <= 30;
+    return {
+      cards: visible.map(c => ({ word: c.word, meanings: c.meanings.map(m => ({ ...m, meaning: this.state.mask ? '••••••' : m.meaning })) })),
+      shownMeanings: shown,
+      maskOn: this.state.mask, maskOff: !this.state.mask,
+      planned: this.state.planned, plannedOff: !this.state.planned,
+      correct: this.state.correct, correctOff: !this.state.correct,
+      wrong: this.state.wrong, wrongOff: !this.state.wrong,
+      testOn: testOn, testOff: !testOn,
+      hasMore: rest > 0,
+      allLoaded: rest <= 0,
+      moreCount: '(' + Math.max(rest, 0) + ')',
+      loadMore: () => this.setState(s => ({ count: Math.min(s.count + 2, ALL.length) })),
+      toggleMask: () => this.setState(s => ({ mask: !s.mask })),
+      togglePlanned: () => this.setState(s => ({ planned: !s.planned })),
+      toggleCorrect: () => this.setState(s => ({ correct: !s.correct })),
+      toggleWrong: () => this.setState(s => ({ wrong: !s.wrong }))
+    };
+  }
+}
+
+</script>
+</body>
+</html>
