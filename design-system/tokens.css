@@ -181,10 +181,10 @@
   --shadow-brand: 0 4px 14px rgba(147, 51, 234, 0.25);  /* 컬러드 그림자 (기존 shadow-purple-100/200) */
 
   /* ── 모션 ──────────────────────────────────────────────────────── */
-  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
-  --duration-fast: 150ms;
-  --duration-base: 300ms;
-  --duration-slow: 400ms;
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --duration-fast: 150ms; /* @kind other */
+  --duration-base: 300ms; /* @kind other */
+  --duration-slow: 400ms; /* @kind other */
 
   /* ── iOS Safe Area ──────────────────────────────────────────────── */
   --sat: env(safe-area-inset-top);
