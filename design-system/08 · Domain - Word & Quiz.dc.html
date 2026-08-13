@@ -31,38 +31,38 @@
           <h2 style="margin:0;font-size:var(--text-xl);font-weight:var(--font-weight-bold);">단어 목록 필터 Wordbook Filter</h2>
           <span style="font-size:var(--text-sm);color:var(--gray-400);">정렬 · 단계 필터 · 의미 가리기 · 학습 이력 서브필터</span>
         </div>
-        <div style="background:rgba(255,255,255,0.95);border:1px solid var(--border-subtle);border-radius:var(--radius-2xl);padding:16px;max-width:1100px;">
+        <div style="background:rgba(255,255,255,0.95);border:1px solid var(--border-subtle);border-radius:var(--radius-2xl);padding:12px;max-width:1100px;">
 
           <div style="display:flex;align-items:center;gap:8px;">
-            <div style="flex:1;min-width:0;height:40px;padding:0 12px;border:1px solid var(--gray-200);border-radius:var(--radius-md);background:#fff;display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer;transition:background var(--duration-fast);" style-hover="background:var(--gray-50);">
+            <div style="flex:1;min-width:0;height:34px;padding:0 10px;border:1px solid var(--gray-200);border-radius:var(--radius-md);background:#fff;display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer;transition:background var(--duration-fast);" style-hover="background:var(--gray-50);">
               <span style="display:flex;align-items:center;gap:8px;min-width:0;">
                 <span style="color:var(--gray-500);display:flex;flex-shrink:0;">{{ sortIcon }}</span>
-                <span style="font-size:var(--text-sm);white-space:nowrap;">최근 업데이트 순</span>
+                <span style="font-size:var(--text-xs);white-space:nowrap;">최근 업데이트 순</span>
               </span>
               <span style="color:var(--gray-400);display:flex;flex-shrink:0;opacity:0.5;">{{ chevronIcon }}</span>
             </div>
-            <div style="flex:1;min-width:0;height:40px;padding:0 12px;border:1px solid var(--gray-200);border-radius:var(--radius-md);background:#fff;display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer;transition:background var(--duration-fast);" style-hover="background:var(--gray-50);">
+            <div style="flex:1;min-width:0;height:34px;padding:0 10px;border:1px solid var(--gray-200);border-radius:var(--radius-md);background:#fff;display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer;transition:background var(--duration-fast);" style-hover="background:var(--gray-50);">
               <span style="display:flex;align-items:center;gap:8px;min-width:0;">
                 <span style="color:var(--gray-500);display:flex;flex-shrink:0;">{{ filterIcon }}</span>
-                <span style="font-size:var(--text-sm);white-space:nowrap;">전체</span>
+                <span style="font-size:var(--text-xs);white-space:nowrap;">전체</span>
               </span>
               <span style="color:var(--gray-400);display:flex;flex-shrink:0;opacity:0.5;">{{ chevronIcon }}</span>
             </div>
-            <button style="flex:1;min-width:0;height:40px;padding:0 12px;border:1px solid transparent;border-radius:var(--radius-md);background:var(--primary);color:#fff;font-family:inherit;font-size:var(--text-sm);font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:var(--shadow-md);transition:all var(--duration-base);" style-hover="background:var(--primary-hover);">
+            <button style="flex:1;min-width:0;height:34px;padding:0 10px;border:1px solid transparent;border-radius:var(--radius-md);background:var(--primary);color:#fff;font-family:inherit;font-size:var(--text-xs);font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:var(--shadow-md);transition:all var(--duration-base);" style-hover="background:var(--primary-hover);">
               <span style="display:flex;flex-shrink:0;">{{ eyeIcon }}</span>
               <span style="white-space:nowrap;">의미 가리기</span>
             </button>
           </div>
 
-          <div style="display:flex;align-items:center;gap:6px;margin-top:8px;">
-            <button style="height:24px;padding:0 8px;border:1px solid var(--gray-500);border-radius:var(--radius-md);background:var(--gray-500);color:#fff;font-family:inherit;font-size:var(--text-sm);font-weight:700;cursor:pointer;box-shadow:var(--shadow-sm);flex-shrink:0;">학습 예정</button>
-            <button style="height:24px;padding:0 8px;border:1px solid var(--green-500);border-radius:var(--radius-md);background:var(--green-500);color:#fff;font-family:inherit;font-size:var(--text-sm);font-weight:700;cursor:pointer;box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:2px;flex-shrink:0;">{{ checkIcon }}정답</button>
-            <button style="height:24px;padding:0 8px;border:1px solid var(--red-500);border-radius:var(--radius-md);background:var(--red-500);color:#fff;font-family:inherit;font-size:var(--text-sm);font-weight:700;cursor:pointer;box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:2px;flex-shrink:0;">{{ xCircleIcon }}오답</button>
+          <div style="display:flex;align-items:center;gap:6px;margin-top:6px;">
+            <button style="height:22px;padding:0 8px;border:1px solid var(--gray-500);border-radius:var(--radius-md);background:var(--gray-500);color:#fff;font-family:inherit;font-size:var(--text-xs);font-weight:700;cursor:pointer;box-shadow:var(--shadow-sm);flex-shrink:0;">학습 예정</button>
+            <button style="height:22px;padding:0 8px;border:1px solid var(--green-500);border-radius:var(--radius-md);background:var(--green-500);color:#fff;font-family:inherit;font-size:var(--text-xs);font-weight:700;cursor:pointer;box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:2px;flex-shrink:0;">{{ checkIcon }}정답</button>
+            <button style="height:22px;padding:0 8px;border:1px solid var(--red-500);border-radius:var(--radius-md);background:var(--red-500);color:#fff;font-family:inherit;font-size:var(--text-xs);font-weight:700;cursor:pointer;box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:2px;flex-shrink:0;">{{ xCircleIcon }}오답</button>
           </div>
 
-          <div style="display:flex;align-items:center;gap:24px;margin-top:12px;border-top:1px solid var(--gray-200);padding-top:10px;">
-            <span style="font-size:var(--text-sm);font-weight:500;color:var(--gray-400);flex-shrink:0;">전체 : 단어 23개, 의미 31개</span>
-            <button style="height:36px;padding:0 12px;border:1px solid var(--gray-200);border-radius:var(--radius-md);background:var(--gray-100);color:var(--gray-400);font-family:inherit;font-size:var(--text-sm);font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px;flex-shrink:0;transition:background var(--duration-fast);" style-hover="background:var(--gray-200);">
+          <div style="display:flex;align-items:center;gap:16px;margin-top:8px;border-top:1px solid var(--gray-200);padding-top:8px;">
+            <span style="font-size:var(--text-xs);font-weight:500;color:var(--gray-400);flex-shrink:0;">전체 : 단어 23개, 의미 31개</span>
+            <button style="height:28px;padding:0 10px;border:1px solid var(--gray-200);border-radius:var(--radius-md);background:var(--gray-100);color:var(--gray-400);font-family:inherit;font-size:var(--text-xs);font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px;flex-shrink:0;transition:background var(--duration-fast);" style-hover="background:var(--gray-200);">
               <span style="color:var(--gray-400);display:flex;">{{ zapIconGray }}</span>표시된 단어 테스트 해보기
             </button>
           </div>
@@ -114,11 +114,13 @@
                 <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px;">
                   <!-- 배지를 텍스트 흐름 안에 두려고 flex가 아닌 display:block + margin-right 로 배치했다.
                        flex + flex-shrink:0 이면 긴 의미가 배지 오른쪽 좁은 칸 안에서만 접히는데,
-                       block inline 흐름이면 의미가 길어질 때 배지 아래 전체 폭으로 개행된다. -->
-                  <div style="display:block;">
-                    <span style="display:inline-flex;align-items:center;padding:1px 6px;margin-right:6px;border-radius:var(--radius-sm);background:var(--gray-100);color:var(--gray-500);font-size:8px;font-weight:700;">{{ m.pos }}</span>
-                    <span style="display:inline-flex;align-items:center;padding:2px 10px;margin-right:6px;border-radius:var(--radius-full);background:var(--purple-100);color:var(--purple-700);font-size:8px;font-weight:500;">{{ m.stage }}</span>
-                    <span style="font-size:var(--text-sm);font-weight:600;color:var(--gray-900);">{{ m.meaning }}</span>
+                       block inline 흐름이면 의미가 길어질 때 배지 아래 전체 폭으로 개행된다.
+                       inline 흐름에서는 배지가 baseline 에 걸려 의미 텍스트와 어긋나므로
+                       배지·의미 모두 vertical-align:middle 로 맞추고, 줄 간격은 line-height:1.5 로 준다. -->
+                  <div style="display:block;line-height:1.5;">
+                    <span style="display:inline-flex;align-items:center;vertical-align:middle;padding:1px 6px;margin-right:6px;border-radius:var(--radius-sm);background:var(--gray-100);color:var(--gray-500);font-size:8px;font-weight:700;">{{ m.pos }}</span>
+                    <span style="display:inline-flex;align-items:center;vertical-align:middle;padding:2px 10px;margin-right:6px;border-radius:var(--radius-full);background:var(--purple-100);color:var(--purple-700);font-size:8px;font-weight:500;">{{ m.stage }}</span>
+                    <span style="font-size:var(--text-sm);font-weight:600;color:var(--gray-900);vertical-align:middle;">{{ m.meaning }}</span>
                   </div>
                   <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:10px;">
                     <span style="font-size:var(--text-xs);color:var(--gray-500);line-height:1.5;">{{ m.ex }}</span>
