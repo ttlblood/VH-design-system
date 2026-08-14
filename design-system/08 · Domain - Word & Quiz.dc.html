@@ -20,7 +20,7 @@
         <span style="font-size:var(--text-sm);font-weight:var(--font-weight-bold);color:var(--primary);letter-spacing:0.04em;text-transform:uppercase;">Component · 08</span>
       </div>
       <h1 style="margin:0;font-size:var(--text-4xl);line-height:var(--leading-4xl);font-weight:var(--font-weight-extrabold);">도메인 — 단어</h1>
-      <p style="margin:0;max-width:640px;font-size:var(--text-base);line-height:var(--leading-base);color:var(--gray-500);text-wrap:pretty;">파운데이션과 기본 컴포넌트를 조합한 제품 고유 패턴. 단어 카드(반응형 다중 의미), SRS 도트·배지 규칙, 단어 상세 모달입니다. 퀴즈는 <a href="09 · Domain - Quiz.dc.html" style="color:var(--primary);">09 · 도메인 — 퀴즈</a>에서 관리합니다.</p>
+      <p style="margin:0;max-width:640px;font-size:var(--text-base);line-height:var(--leading-base);color:var(--gray-500);text-wrap:pretty;">파운데이션과 기본 컴포넌트를 조합한 제품 고유 패턴. 단어 카드(반응형 다중 의미), SRS 도트·배지 규칙, 단어 상세 모달, 그리고 이들을 조립한 단어장 화면입니다. 퀴즈는 <a href="09 · Domain - Quiz.dc.html" style="color:var(--primary);">09 · 도메인 — 퀴즈</a>에서 관리합니다.</p>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;">
@@ -87,7 +87,7 @@
       <section style="grid-column:span 2;">
         <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:0 0 16px;">
           <h2 style="margin:0;font-size:var(--text-xl);font-weight:var(--font-weight-bold);">단어 카드 Word Card</h2>
-          <span style="font-size:var(--text-sm);color:var(--gray-400);">화면 800px↑ 2열 · 1200px↑ 3열 · 필터/카드 최대 1100px · 현재 {{ colsLabel }}</span>
+          <span style="font-size:var(--text-sm);color:var(--gray-400);">카드 폭 400 / 800 / 1200px → 1 / 2 / 3열 · 필터/카드 최대 1100px · 현재 {{ colsLabel }}</span>
         </div>
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
           <span style="font-size:var(--text-xs);font-weight:700;color:var(--gray-400);">카드 폭</span>
@@ -252,25 +252,189 @@
         </div>
       </section>
 
+      <!-- Wordbook screen — 구 templates/wordbook/Wordbook.dc.html 병합본.
+           위 필터·단어 카드 컴포넌트의 "현재 규격"(34px 컨트롤 · 22px 칩 · 집계 분리 ·
+           퀴즈 풀어보기 · 의미 그리드 720/1052 판정)을 그대로 조립한 실제 화면이다.
+           템플릿과 문서가 두 벌로 갈라져 수치가 어긋나던 문제를 없애기 위해 합쳤다. -->
+      <section style="grid-column:span 2;">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:0 0 16px;">
+          <h2 style="margin:0;font-size:var(--text-xl);font-weight:var(--font-weight-bold);">단어장 화면 Wordbook Screen</h2>
+          <span style="font-size:var(--text-sm);color:var(--gray-400);">필터 + 단어 카드 + 더보기 조립 · 의미 가리기/서브필터/더보기 동작</span>
+        </div>
+        <div style="border:1px solid var(--gray-200);border-radius:var(--radius-2xl);background:var(--gray-50);padding:24px 16px;">
+          <div style="max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px;">
+
+            <!-- 화면 헤더 — 구 템플릿의 우측 집계 텍스트는 필터 하단 집계로 대체되어 제거 -->
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <span style="font-size:var(--text-xs);font-weight:700;color:var(--primary);letter-spacing:0.06em;text-transform:uppercase;">Wordbook</span>
+              <div style="font-size:var(--text-2xl);line-height:var(--leading-2xl);font-weight:var(--font-weight-extrabold);">내 단어장</div>
+            </div>
+
+            <!-- 필터 바 — 상단 컴포넌트 규격과 동일 (34px 컨트롤 · 12px 패딩 · 집계 분리) -->
+            <div style="background:rgba(255,255,255,0.95);border:1px solid var(--border-subtle);border-radius:var(--radius-2xl);padding:12px;">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div style="flex:1;min-width:0;height:34px;padding:0 10px;border:1px solid var(--gray-200);border-radius:var(--radius-md);background:#fff;display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer;transition:background var(--duration-fast);" style-hover="background:var(--gray-50);">
+                  <span style="display:flex;align-items:center;gap:8px;min-width:0;">
+                    <span style="color:var(--gray-500);display:flex;flex-shrink:0;">{{ sortIcon }}</span>
+                    <span style="font-size:var(--text-xs);white-space:nowrap;">최근 업데이트 순</span>
+                  </span>
+                  <span style="color:var(--gray-400);display:flex;flex-shrink:0;opacity:0.5;">{{ chevronIcon }}</span>
+                </div>
+                <div style="flex:1;min-width:0;height:34px;padding:0 10px;border:1px solid var(--gray-200);border-radius:var(--radius-md);background:#fff;display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer;transition:background var(--duration-fast);" style-hover="background:var(--gray-50);">
+                  <span style="display:flex;align-items:center;gap:8px;min-width:0;">
+                    <span style="color:var(--gray-500);display:flex;flex-shrink:0;">{{ filterIcon }}</span>
+                    <span style="font-size:var(--text-xs);white-space:nowrap;">전체</span>
+                  </span>
+                  <span style="color:var(--gray-400);display:flex;flex-shrink:0;opacity:0.5;">{{ chevronIcon }}</span>
+                </div>
+                <sc-if value="{{ wbMaskOff }}" hint-placeholder-val="{{ true }}">
+                  <button onClick="{{ wbToggleMask }}" style="flex:1;min-width:0;height:34px;padding:0 10px;border:1px solid transparent;border-radius:var(--radius-md);background:var(--primary);color:#fff;font-family:inherit;font-size:var(--text-xs);font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:var(--shadow-md);transition:all var(--duration-base);" style-hover="background:var(--primary-hover);">
+                    <span style="display:flex;flex-shrink:0;">{{ eyeIcon }}</span>
+                    <span style="white-space:nowrap;">의미 가리기</span>
+                  </button>
+                </sc-if>
+                <sc-if value="{{ wbMaskOn }}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{ wbToggleMask }}" style="flex:1;min-width:0;height:34px;padding:0 10px;border:1px solid transparent;border-radius:var(--radius-md);background:var(--primary-active);color:#fff;font-family:inherit;font-size:var(--text-xs);font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:var(--shadow-md);transition:all var(--duration-base);">
+                    <span style="display:flex;flex-shrink:0;">{{ eyeOffIcon }}</span>
+                    <span style="white-space:nowrap;">의미 보이기</span>
+                  </button>
+                </sc-if>
+              </div>
+              <div style="display:flex;align-items:center;gap:6px;margin-top:6px;">
+                <sc-if value="{{ wbPlanned }}" hint-placeholder-val="{{ true }}">
+                  <button onClick="{{ wbTogglePlanned }}" style="height:22px;padding:0 8px;border:1px solid var(--gray-500);border-radius:var(--radius-md);background:var(--gray-500);color:#fff;font-family:inherit;font-size:var(--text-xs);font-weight:700;cursor:pointer;box-shadow:var(--shadow-sm);flex-shrink:0;">학습 예정</button>
+                </sc-if>
+                <sc-if value="{{ wbPlannedOff }}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{ wbTogglePlanned }}" style="height:22px;padding:0 8px;border:1px solid var(--gray-200);border-radius:var(--radius-md);background:var(--gray-100);color:var(--gray-400);font-family:inherit;font-size:var(--text-xs);font-weight:700;cursor:pointer;flex-shrink:0;">학습 예정</button>
+                </sc-if>
+                <sc-if value="{{ wbCorrect }}" hint-placeholder-val="{{ true }}">
+                  <button onClick="{{ wbToggleCorrect }}" style="height:22px;padding:0 8px;border:1px solid var(--green-500);border-radius:var(--radius-md);background:var(--green-500);color:#fff;font-family:inherit;font-size:var(--text-xs);font-weight:700;cursor:pointer;box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:2px;flex-shrink:0;">{{ checkIcon }}정답</button>
+                </sc-if>
+                <sc-if value="{{ wbCorrectOff }}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{ wbToggleCorrect }}" style="height:22px;padding:0 8px;border:1px solid var(--green-200);border-radius:var(--radius-md);background:var(--green-100);color:var(--gray-400);font-family:inherit;font-size:var(--text-xs);font-weight:700;cursor:pointer;display:flex;align-items:center;gap:2px;flex-shrink:0;">{{ checkIcon }}정답</button>
+                </sc-if>
+                <sc-if value="{{ wbWrong }}" hint-placeholder-val="{{ true }}">
+                  <button onClick="{{ wbToggleWrong }}" style="height:22px;padding:0 8px;border:1px solid var(--red-500);border-radius:var(--radius-md);background:var(--red-500);color:#fff;font-family:inherit;font-size:var(--text-xs);font-weight:700;cursor:pointer;box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:2px;flex-shrink:0;">{{ xCircleIcon }}오답</button>
+                </sc-if>
+                <sc-if value="{{ wbWrongOff }}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{ wbToggleWrong }}" style="height:22px;padding:0 8px;border:1px solid var(--red-200);border-radius:var(--radius-md);background:var(--red-100);color:var(--gray-400);font-family:inherit;font-size:var(--text-xs);font-weight:700;cursor:pointer;display:flex;align-items:center;gap:2px;flex-shrink:0;">{{ xCircleIcon }}오답</button>
+                </sc-if>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:8px;border-top:1px solid var(--gray-200);padding-top:8px;">
+                <span style="display:inline-flex;align-items:center;gap:10px;flex-shrink:0;font-size:var(--text-xs);font-weight:500;color:var(--gray-900);"><span>전체</span><span>단어 {{ wbWordCount }}개</span></span>
+                <span style="display:inline-flex;align-items:center;flex-shrink:0;padding:3px 12px;border:1px solid var(--gray-300);border-radius:var(--radius-full);background:#fff;font-size:var(--text-xs);font-weight:500;color:var(--gray-900);">의미 {{ wbShownMeanings }}개</span>
+                <span style="width:16px;height:1px;background:var(--gray-300);flex-shrink:0;margin:0 -10px;"></span>
+                <sc-if value="{{ wbTestOn }}" hint-placeholder-val="{{ true }}">
+                  <button style="height:28px;padding:0 10px;border:1px solid var(--primary-border);border-radius:var(--radius-md);background:var(--primary-subtle);color:var(--primary);font-family:inherit;font-size:var(--text-xs);font-weight:700;cursor:pointer;flex-shrink:0;" style-hover="background:var(--purple-100);">퀴즈 풀어보기</button>
+                </sc-if>
+                <sc-if value="{{ wbTestOff }}" hint-placeholder-val="{{ false }}">
+                  <button style="height:28px;padding:0 10px;border:1px solid var(--gray-200);border-radius:var(--radius-md);background:var(--gray-100);color:var(--gray-400);font-family:inherit;font-size:var(--text-xs);font-weight:700;cursor:not-allowed;flex-shrink:0;">퀴즈 풀어보기</button>
+                </sc-if>
+              </div>
+            </div>
+
+            <!-- 단어 카드 리스트 — 의미 그리드는 데모 카드와 같은 720/1052 판정을 공유 -->
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <sc-for list="{{ wbCards }}" as="c" hint-placeholder-count="3">
+                <div style="background:#fff;border:1px solid var(--gray-100);border-radius:var(--radius-2xl);padding:20px 24px;transition:box-shadow var(--duration-base);" style-hover="box-shadow:var(--shadow-lg);">
+                  <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+                    <span style="font-size:var(--text-lg);font-weight:700;color:var(--gray-900);">{{ c.word }}</span>
+                    <span style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gray-500);cursor:pointer;transition:all var(--duration-fast);" style-hover="background:var(--purple-100);color:var(--primary);">{{ volumeIcon }}</span>
+                  </div>
+                  <div data-wb-grid="1" style="display:grid;grid-auto-flow:column;grid-template-columns:{{ wbColTemplate }};grid-template-rows:{{ c.rowTemplate }};gap:18px 28px;">
+                    <sc-for list="{{ c.meanings }}" as="m" hint-placeholder-count="2">
+                      <div style="display:flex;align-items:center;gap:10px;min-width:0;">
+                        <div style="display:flex;flex-direction:column;gap:6px;align-items:center;flex-shrink:0;">
+                          <span style="width:8px;height:8px;border-radius:50%;background:{{ m.dots.0 }};box-shadow:var(--shadow-sm);"></span>
+                          <span style="width:8px;height:8px;border-radius:50%;background:{{ m.dots.1 }};box-shadow:var(--shadow-sm);"></span>
+                          <span style="width:8px;height:8px;border-radius:50%;background:{{ m.dots.2 }};box-shadow:var(--shadow-sm);"></span>
+                        </div>
+                        <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px;">
+                          <div style="display:block;line-height:1.5;">
+                            <span style="display:inline-flex;align-items:center;vertical-align:middle;padding:1px 6px;margin-right:6px;border-radius:var(--radius-sm);background:var(--gray-100);color:var(--gray-500);font-size:8px;font-weight:700;">{{ m.pos }}</span>
+                            <span style="display:inline-flex;align-items:center;vertical-align:middle;padding:2px 10px;margin-right:6px;border-radius:var(--radius-full);background:var(--purple-100);color:var(--purple-700);font-size:8px;font-weight:500;">{{ m.stage }}</span>
+                            <span style="font-size:var(--text-sm);font-weight:600;color:var(--gray-900);vertical-align:middle;">{{ m.meaning }}</span>
+                          </div>
+                          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:10px;">
+                            <span style="font-size:var(--text-xs);color:var(--gray-500);line-height:1.5;">{{ m.ex }}</span>
+                            <span style="color:var(--gray-400);font-size:10px;flex-shrink:0;white-space:nowrap;">{{ m.ts }}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+
+            <!-- 더보기 / 끝 안내 -->
+            <sc-if value="{{ wbHasMore }}" hint-placeholder-val="{{ true }}">
+              <button onClick="{{ wbLoadMore }}" style="align-self:center;margin-top:8px;height:44px;padding:0 28px;border:1px solid var(--gray-200);border-radius:var(--radius-full);background:#fff;color:var(--gray-600);font-family:inherit;font-size:var(--text-sm);font-weight:700;cursor:pointer;box-shadow:var(--shadow-sm);transition:all var(--duration-base);" style-hover="background:var(--gray-50);color:var(--primary);border-color:var(--primary-border);">더보기 {{ wbMoreCount }}</button>
+            </sc-if>
+            <sc-if value="{{ wbAllLoaded }}" hint-placeholder-val="{{ false }}">
+              <span style="align-self:center;margin-top:8px;font-size:var(--text-xs);color:var(--gray-400);">마지막 단어입니다</span>
+            </sc-if>
+
+          </div>
+        </div>
+      </section>
+
     </div>
   </div>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1300,&quot;height&quot;:1200}}">class Component extends DCLogic {
-  state = { cols: 1, expanded: false, demoWidth: 'full', picked: null };
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1300,&quot;height&quot;:1200}}">// ── 단어장 화면(구 templates/wordbook) 데모 데이터 ─────────────────────────
+// 카드별 의미 수가 1~3개로 섞여 있어 열 배치와 행 수 계산(빈 행 gap 버그 방지)을
+// 한 화면에서 검증할 수 있다. wb 접두사는 데모 카드 키와의 충돌 방지용.
+const WB_D = { g: 'var(--green-500)', r: 'var(--red-500)', n: 'var(--gray-300)' };
+const WB_ALL = [
+  { word: 'drain', meanings: [
+    { pos: '명사', stage: '7일차', meaning: '배수관, 하수구', ex: 'The sink is clogged, and the drain is blocked.', ts: '2개월 전', dots: [WB_D.g, WB_D.n, WB_D.n] },
+    { pos: '명사', stage: '3일차', meaning: '점진적인 감소, 소모', ex: "The drain on the company's resources was significant.", ts: '2개월 전', dots: [WB_D.g, WB_D.r, WB_D.n] },
+    { pos: '타동사', stage: '1일차', meaning: '기진맥진하게 하다', ex: 'The long journey drained him.', ts: '2개월 전', dots: [WB_D.g, WB_D.n, WB_D.n] } ] },
+  { word: 'sustain', meanings: [
+    { pos: '타동사', stage: '신규', meaning: '지속하다, 유지하다', ex: 'They sustained the pace for an hour.', ts: '3일 전', dots: [WB_D.n, WB_D.n, WB_D.n] },
+    { pos: '타동사', stage: '1일차', meaning: '(피해를) 입다', ex: 'He sustained minor injuries.', ts: '3일 전', dots: [WB_D.r, WB_D.n, WB_D.n] } ] },
+  { word: 'concede', meanings: [
+    { pos: '타동사', stage: '3일차', meaning: '인정하다, 시인하다', ex: 'She conceded that he was right.', ts: '1주 전', dots: [WB_D.g, WB_D.g, WB_D.n] },
+    { pos: '자동사', stage: '3일차', meaning: '(패배를) 인정하다', ex: 'The candidate conceded on election night.', ts: '1주 전', dots: [WB_D.g, WB_D.n, WB_D.n] } ] },
+  { word: 'prudent', meanings: [
+    { pos: '형용사', stage: '7일차', meaning: '신중한, 분별 있는', ex: 'It would be prudent to wait.', ts: '2주 전', dots: [WB_D.g, WB_D.g, WB_D.g] } ] },
+  { word: 'lapse', meanings: [
+    { pos: '명사', stage: '1일차', meaning: '실수, 착오', ex: 'A lapse in judgment cost them the deal.', ts: '2주 전', dots: [WB_D.r, WB_D.n, WB_D.n] },
+    { pos: '자동사', stage: '신규', meaning: '(효력이) 소멸하다', ex: 'The membership lapsed last month.', ts: '2주 전', dots: [WB_D.n, WB_D.n, WB_D.n] } ] } ];
+// 집계는 앱과 동일하게 페이지네이션(더보기)과 무관한 전체 기준값을 쓴다.
+const WB_TOTAL_MEANINGS = WB_ALL.reduce((n, c) => n + c.meanings.length, 0);
+
+class Component extends DCLogic {
+  state = { cols: 1, expanded: false, demoWidth: 'full', picked: null,
+            wbCols: 1, wbCount: 3, wbMask: false, wbPlanned: true, wbCorrect: true, wbWrong: true };
 
   componentDidMount() {
     this.measure = () => {
-      const el = this.gridEl || document.querySelector('[data-meaning-grid]');
-      if (!el) return;
-      this.gridEl = el;
-      const w = el.clientWidth || el.getBoundingClientRect().width || 0;
-      if (!w) return;
-      // 화면 폭 800/1200 브레이크포인트를 의미 그리드의 컨테이너 폭으로 환산한 값.
+      // 데모 카드 의미 그리드.
+      // 화면 폭 800/1200 브레이크포인트를 의미 그리드의 컨테이너 폭으로 환산한 값:
       // 화면 800 → 카드 폭 768 → 좌우 패딩 24×2 제외 720
       // 화면 1200 → 카드 상한 1100 → 좌우 패딩 24×2 제외 1052
-      const cols = w >= 1052 ? 3 : w >= 720 ? 2 : 1;
-      if (cols !== this.state.cols) this.setState({ cols });
+      const el = this.gridEl || document.querySelector('[data-meaning-grid]');
+      if (el) {
+        this.gridEl = el;
+        const w = el.clientWidth || el.getBoundingClientRect().width || 0;
+        if (w) {
+          const cols = w >= 1052 ? 3 : w >= 720 ? 2 : 1;
+          if (cols !== this.state.cols) this.setState({ cols });
+        }
+      }
+      // 단어장 화면 카드의 의미 그리드 — 같은 720/1052 기준.
+      // 카드들이 전부 같은 폭이므로 첫 번째 그리드 하나만 측정하면 충분하다.
+      const wbEl = document.querySelector('[data-wb-grid]');
+      if (wbEl) {
+        const ww = wbEl.clientWidth || wbEl.getBoundingClientRect().width || 0;
+        if (ww) {
+          const wbCols = ww >= 1052 ? 3 : ww >= 720 ? 2 : 1;
+          if (wbCols !== this.state.wbCols) this.setState({ wbCols });
+        }
+      }
     };
     if (typeof ResizeObserver !== 'undefined') {
       this.ro = new ResizeObserver(() => this.measure());
@@ -301,7 +465,6 @@
       eye: ['M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0'],
       check2: ['M21.801 10A10 10 0 1 1 17 3.335', 'm9 11 3 3L22 4'],
       xCircle: ['M10 15 15 10', 'm10 10 5 5', 'M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z'],
-      zap: ['M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z'],
       chevronDown: ['m6 9 6 6 6-6']
     };
     const kids = P[name].map((d, i) => React.createElement('path', { key: i, d }));
@@ -380,9 +543,10 @@
       colsLabel: cols + '열 · ' + visibleCount + '/' + all.length + '개 의미 표시',
       toggle: () => this.setState(s => ({ expanded: !s.expanded })),
       gridRef: el => { this.gridEl = el; },
-      // 데모 스위치 폭 = 각 구간의 대표 화면에서 카드가 실제로 갖는 폭
-      // 모바일 390 → 358 / 태블릿 768 → 736 / 데스크톱 1200↑ → 상한 1100
-      cardMaxWidth: ({ narrow: '358px', medium: '736px', full: '1100px' })[this.state.demoWidth],
+      // 데모 스위치 폭 400/800/1200 — 브레이크포인트 경계값을 그대로 보여준다
+      // (디자인 툴 세션에서 결정했으나 저장 유실됐던 값의 복원).
+      // 열 판정은 그리드 폭 720/1052 기준: 400→1열(352), 800→2열(752), 1200→3열(1152).
+      cardMaxWidth: ({ narrow: '400px', medium: '800px', full: '1200px' })[this.state.demoWidth],
       setNarrow: () => { this.setState({ demoWidth: 'narrow' }, () => setTimeout(this.measure, 30)); },
       setMedium: () => { this.setState({ demoWidth: 'medium' }, () => setTimeout(this.measure, 30)); },
       setFull:   () => { this.setState({ demoWidth: 'full' },   () => setTimeout(this.measure, 30)); },
@@ -390,10 +554,8 @@
       filterIcon: this.lucide('filter', 16),
       eyeIcon: this.lucide('eye', 16),
       eyeOffIcon: this.lucide('eyeOff', 16),
-      zapIconGray: this.lucide('zap', 14),
       checkIcon: this.lucide('check2', 12),
       xCircleIcon: this.lucide('xCircle', 12),
-      zapIcon: this.lucide('zap', 14),
       chevronIcon: this.lucide('chevronDown', 16),
       volumeIcon: this.lucide('volume', 16),
       volumeIconLg: this.lucide('volume', 18),
@@ -419,7 +581,34 @@
         : { width: '100%', height: '44px', border: 'none', borderRadius: 'var(--radius-full)', background: 'var(--primary)', color: '#fff', fontFamily: 'inherit', fontSize: 'var(--text-sm)', fontWeight: 600, cursor: 'pointer', boxShadow: 'var(--shadow-md)' },
       narrowStyle: this.chipStyle(this.state.demoWidth === 'narrow'),
       mediumStyle: this.chipStyle(this.state.demoWidth === 'medium'),
-      fullStyle:   this.chipStyle(this.state.demoWidth === 'full')
+      fullStyle:   this.chipStyle(this.state.demoWidth === 'full'),
+
+      // ── 단어장 화면 (구 templates/wordbook 병합분) ──────────────────────
+      // rowTemplate 은 카드마다 의미 수가 달라 카드별로 계산한다.
+      // ceil(의미 수 / 열 수)라서 의미 1개 카드도 1행 — 빈 행 gap 이 생기지 않는다.
+      wbCards: WB_ALL.slice(0, this.state.wbCount).map(c => ({
+        word: c.word,
+        rowTemplate: 'repeat(' + Math.max(1, Math.ceil(c.meanings.length / this.state.wbCols)) + ', auto)',
+        meanings: c.meanings.map(m => ({ ...m, meaning: this.state.wbMask ? '••••••' : m.meaning }))
+      })),
+      wbColTemplate: 'repeat(' + this.state.wbCols + ', minmax(0, 1fr))',
+      // 집계는 더보기(페이지네이션)와 무관 — 앱의 totalWords 의미론과 동일.
+      wbWordCount: WB_ALL.length,
+      wbShownMeanings: WB_TOTAL_MEANINGS,
+      wbTestOn: WB_TOTAL_MEANINGS <= 30,
+      wbTestOff: WB_TOTAL_MEANINGS > 30,
+      wbMaskOn: this.state.wbMask, wbMaskOff: !this.state.wbMask,
+      wbPlanned: this.state.wbPlanned, wbPlannedOff: !this.state.wbPlanned,
+      wbCorrect: this.state.wbCorrect, wbCorrectOff: !this.state.wbCorrect,
+      wbWrong: this.state.wbWrong, wbWrongOff: !this.state.wbWrong,
+      wbHasMore: WB_ALL.length - this.state.wbCount > 0,
+      wbAllLoaded: WB_ALL.length - this.state.wbCount <= 0,
+      wbMoreCount: '(' + Math.max(WB_ALL.length - this.state.wbCount, 0) + ')',
+      wbLoadMore: () => this.setState(s => ({ wbCount: Math.min(s.wbCount + 2, WB_ALL.length) })),
+      wbToggleMask: () => this.setState(s => ({ wbMask: !s.wbMask })),
+      wbTogglePlanned: () => this.setState(s => ({ wbPlanned: !s.wbPlanned })),
+      wbToggleCorrect: () => this.setState(s => ({ wbCorrect: !s.wbCorrect })),
+      wbToggleWrong: () => this.setState(s => ({ wbWrong: !s.wbWrong }))
     };
   }
 }</script>
