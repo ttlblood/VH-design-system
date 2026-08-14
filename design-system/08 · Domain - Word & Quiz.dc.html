@@ -365,7 +365,12 @@
     const visibleCount = this.state.expanded ? all.length : Math.min(cols * perCol, all.length);
     const visible = all.slice(0, visibleCount);
     const remaining = all.length - visibleCount;
-    const rows = this.state.expanded ? Math.ceil(all.length / cols) : perCol;
+    // 접힘 상태의 행 수는 perCol(2) 이 상한이지만, 실제 표시 개수를 넘으면 안 된다.
+    // 의미가 1개인데 2행을 잡으면 두 번째 행은 높이 0 이어도 행 사이 gap(18px)이
+    // 생성되어 카드 하단에 불필요한 여백으로 남는다.
+    const rows = this.state.expanded
+      ? Math.ceil(all.length / cols)
+      : Math.min(visibleCount, perCol);
 
     return {
       meanings: visible,
