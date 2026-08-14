@@ -95,7 +95,7 @@
           <button onClick="{{ setMedium }}" style="{{ mediumStyle }}">태블릿 2열</button>
           <button onClick="{{ setFull }}" style="{{ fullStyle }}">데스크톱 3열</button>
         </div>
-        <div style="background:#fff;border:1px solid var(--gray-100);border-radius:var(--radius-2xl);padding:17px 24px 20px;transition:box-shadow var(--duration-base);max-width:{{ cardMaxWidth }};" style-hover="box-shadow:var(--shadow-lg);">
+        <div style="background:#fff;border:1px solid var(--gray-100);border-radius:var(--radius-2xl);padding:13px 20px 18px;transition:box-shadow var(--duration-base);max-width:{{ cardMaxWidth }};" style-hover="box-shadow:var(--shadow-lg);">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
             <span style="font-size:var(--text-lg);font-weight:700;color:var(--gray-900);">drain</span>
             <span style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gray-500);cursor:pointer;transition:all var(--duration-fast);" style-hover="background:var(--purple-100);color:var(--primary);">{{ volumeIcon }}</span>
@@ -334,9 +334,9 @@
             </div>
 
             <!-- 단어 카드 리스트 — 의미 그리드는 데모 카드와 같은 720/1052 판정을 공유 -->
-            <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="display:flex;flex-direction:column;gap:10px;">
               <sc-for list="{{ wbCards }}" as="c" hint-placeholder-count="3">
-                <div style="background:#fff;border:1px solid var(--gray-100);border-radius:var(--radius-2xl);padding:17px 24px 20px;transition:box-shadow var(--duration-base);" style-hover="box-shadow:var(--shadow-lg);">
+                <div style="background:#fff;border:1px solid var(--gray-100);border-radius:var(--radius-2xl);padding:13px 20px 18px;transition:box-shadow var(--duration-base);" style-hover="box-shadow:var(--shadow-lg);">
                   <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
                     <span style="font-size:var(--text-lg);font-weight:700;color:var(--gray-900);">{{ c.word }}</span>
                     <span style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gray-500);cursor:pointer;transition:all var(--duration-fast);" style-hover="background:var(--purple-100);color:var(--primary);">{{ volumeIcon }}</span>
