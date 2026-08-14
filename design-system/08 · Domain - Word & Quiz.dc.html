@@ -60,20 +60,18 @@
             <button style="height:22px;padding:0 8px;border:1px solid var(--red-500);border-radius:var(--radius-md);background:var(--red-500);color:#fff;font-family:inherit;font-size:var(--text-xs);font-weight:700;cursor:pointer;box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:2px;flex-shrink:0;">{{ xCircleIcon }}오답</button>
           </div>
 
-          <div style="display:flex;align-items:center;gap:16px;margin-top:8px;border-top:1px solid var(--gray-200);padding-top:8px;">
-            <span style="font-size:var(--text-xs);font-weight:500;color:var(--gray-400);flex-shrink:0;">전체 : 단어 23개, 의미 31개</span>
-            <button style="height:28px;padding:0 10px;border:1px solid var(--gray-200);border-radius:var(--radius-md);background:var(--gray-100);color:var(--gray-400);font-family:inherit;font-size:var(--text-xs);font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px;flex-shrink:0;transition:background var(--duration-fast);" style-hover="background:var(--gray-200);">
-              <span style="color:var(--gray-400);display:flex;">{{ zapIconGray }}</span>표시된 단어 테스트 해보기
-            </button>
+          <div style="display:flex;align-items:center;gap:10px;margin-top:8px;border-top:1px solid var(--gray-200);padding-top:8px;">
+            <span style="display:inline-flex;align-items:center;gap:10px;flex-shrink:0;font-size:var(--text-xs);font-weight:500;color:var(--gray-900);"><span>전체</span><span>단어 23개</span></span>
+            <span style="display:inline-flex;align-items:center;flex-shrink:0;padding:3px 12px;border:1px solid var(--gray-300);border-radius:var(--radius-full);background:#fff;font-size:var(--text-xs);font-weight:500;color:var(--gray-900);">의미 31개</span>
+            <span style="width:16px;height:1px;background:var(--gray-300);flex-shrink:0;margin:0 -10px;"></span>
+            <button style="height:28px;padding:0 10px;border:1px solid var(--gray-200);border-radius:var(--radius-md);background:var(--gray-100);color:var(--gray-400);font-family:inherit;font-size:var(--text-xs);font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px;flex-shrink:0;transition:background var(--duration-fast);" style-hover="background:var(--gray-200);">퀴즈 풀어보기</button>
           </div>
 
         </div>
         <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;font-size:var(--text-xs);color:var(--gray-500);">
           <span style="font-weight:600;color:var(--gray-400);">테스트 버튼 · 의미 30개 이하일 때 활성</span>
           <span style="display:inline-flex;align-items:center;gap:8px;">
-            <button style="height:32px;padding:0 12px;border:1px solid var(--primary-border);border-radius:var(--radius-md);background:var(--primary-subtle);color:var(--primary);font-family:inherit;font-size:var(--text-sm);font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px;" style-hover="background:var(--purple-100);">
-              <span style="color:var(--purple-500);display:flex;">{{ zapIcon }}</span>표시된 단어 테스트 해보기
-            </button>
+            <button style="height:32px;padding:0 12px;border:1px solid var(--primary-border);border-radius:var(--radius-md);background:var(--primary-subtle);color:var(--primary);font-family:inherit;font-size:var(--text-sm);font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px;" style-hover="background:var(--purple-100);">퀴즈 풀어보기</button>
             <span style="color:var(--gray-400);">활성 (≤30)</span>
           </span>
         </div>
