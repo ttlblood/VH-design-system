@@ -11,4 +11,9 @@ VH Design System 프로젝트 저장소입니다.
 ```bash
 # 저장소 클론
 git clone https://github.com/ttlblood/VH-design-system.git
+
+# 로컬에서 디자인 확인용 웹 서버 실행
+python3 -m http.server 8899
 ```
+
+서버 실행 후 브라우저에서 `http://localhost:8899` 로 접속하여 디자인 시스템 문서를 확인할 수 있습니다.
